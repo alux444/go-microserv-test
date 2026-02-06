@@ -17,6 +17,6 @@ func main() {
 		})
 	})
 
-	log.Println("Inventory service starting on :50053")
-	router.Run(":50053")
+	log.Println("User service starting on :50054")
+	router.Run(":50054")
 }
