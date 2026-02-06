@@ -10,7 +10,7 @@ import (
 func main() {
 	router := gin.Default()
 
-	router.get("/health", func(c *gin.Context) {
+	router.GET("/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"status":  "healthy",
 			"service": "inventory-service",

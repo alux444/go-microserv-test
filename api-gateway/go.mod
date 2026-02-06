@@ -5,8 +5,6 @@ go 1.23.0
 require (
 	github.com/gin-gonic/gin v1.11.0
 	github.com/joho/godotenv v1.5.1
-	google.golang.org/grpc v1.61.0
-	google.golang.org/protobuf v1.36.9
 )
 
 require (
@@ -40,4 +38,5 @@ require (
 	golang.org/x/sys v0.35.0 // indirect
 	golang.org/x/text v0.27.0 // indirect
 	golang.org/x/tools v0.34.0 // indirect
+	google.golang.org/protobuf v1.36.9 // indirect
 )
