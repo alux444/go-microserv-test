@@ -1,4 +1,4 @@
-module github.com/alux444/go-microserv-test/api-gateway
+module github.com/alux444/go-microserv-test/services/user-service
 
 go 1.21
 

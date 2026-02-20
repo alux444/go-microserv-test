@@ -1,21 +1,15 @@
 package main
 
 import (
+	"database/sql"
 	"log"
 	"net/http"
 
-	"github.com/alux444/go-microserv-test/api-gateway/internal/database"
+	"github.com/alux444/go-microserv-test/services/user-service/internal/database"
 	"github.com/gin-gonic/gin"
 )
 
-func main() {
-	db, err := database.Connect()
-	if err != nil {
-		log.Fatalf("Failed to connect to database: %v", err)
-	}
-	defer db.Close()
-	log.Println("Connected to db successfully")
-
+func setupRouter(db *sql.DB) *gin.Engine {
 	router := gin.Default()
 
 	router.GET("/health", func(c *gin.Context) {
@@ -53,6 +47,18 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"users": users})
 	})
 
+	return router
+}
+
+func main() {
+	db, err := database.Connect()
+	if err != nil {
+		log.Fatalf("Failed to connect to database: %v", err)
+	}
+	defer db.Close()
+	log.Println("Connected to db successfully")
+
+	router := setupRouter(db)
 	log.Println("User service starting on :50054")
 	router.Run(":50054")
 }
